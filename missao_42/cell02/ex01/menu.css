@@ -1,0 +1,62 @@
+/* Configuração do botão que abre o menu */
+.dropbtn {
+    background-color: rgb(0, 255, 255);
+    color: black;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: 1px gray solid;
+    cursor: pointer;
+    width: 160px;
+}
+
+/* Container do Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Lista que será o conteúdo do menu (escondida por padrão) */
+.dropdown-menu {
+    display: none; /* Esconde o menu */
+    position: absolute;
+    background-color: rgb(230, 255, 255);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px gray solid;
+}
+
+/* Links de dentro do menu */
+.dropdown-menu li a {
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Remove a borda do último item da lista */
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Efeito de mudar de cor ao passar o mouse nos links */
+.dropdown-menu li a:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* Classe para item ativo */
+.active {
+    background-color: black;
+    color: white;
+}
+
+/* Mostra o menu quando o usuário passa o mouse sobre o container .dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

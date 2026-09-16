@@ -1,14 +1,11 @@
-<!DOCTYPE html>
 
-<head>
-    <title> Tabela Responsiva </title>
-    <style>
+    
+   
         table {
             width: 100%;
             height: 100vh;
             border-collapse: collapse;
-            text-align: center;
-           
+            table-layout: fixed;
 
         }
 
@@ -33,30 +30,18 @@
             width: 50%;
             height: 50%;
             }
-            @media (max-width: 100%) {
+            @media (max-width: 600px) {
                 table, tr, td {
                     display: block;
                     width: 100%;}
                 td{height: 50vh; box-sizing: border-box;}
             }
-             html, body {
+                
+        
+        html, body {
             margin: 1;
             border: 1;
             padding: 1;
             overflow:hidden;
-        }    
-        
-       
-    </style>
-</head>
-<body> 
+        }
 
-    <table>
-        <tr>
-            <td class="primeira-celula">é nois </td>
-            <td class="segunda-celula">e paia nisso </td>
-        </tr>
-    </table>
-
-</body>
-</html>
