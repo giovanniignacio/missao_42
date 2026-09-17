@@ -1,0 +1,35 @@
+.img {
+  background-image: url(images);
+    min-height: 100%;
+
+}
+
+h1 {
+    
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px
+    font-width: bold;
+}
+
+table {
+
+    display: none;
+
+
+}
+
+.fig-1 {
+   background-image: url=("facebook.png");
+
+}
+.fig-2{
+    background-image: url=("linkdin.png");
+} 
+.fig-3{
+    background-image: url=("telegrama.png");
+}
+.fig-4{
+
+    background-image: url=("whatsapp.png");
+
+}
