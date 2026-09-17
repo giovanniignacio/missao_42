@@ -41,7 +41,7 @@
 
 /* Remove a borda do último item da lista */
 .dropdown-menu li:last-child a {
-    border-bottom: none;
+    border-bottom: none;200px por 200px com um background vermelho
 }
 
 /* Efeito de mudar de cor ao passar o mouse nos links */

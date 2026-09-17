@@ -1,35 +1,55 @@
-.img {
-  background-image: url(images);
-    min-height: 100%;
+body {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: gray;
+}
 
+.img-1 {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 h1 {
-    
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 40px
-    font-width: bold;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
 table {
-
-    display: none;
-
-
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    border: 2px solid #050505;
 }
 
-.fig-1 {
-   background-image: url=("facebook.png");
-
+td {
+    border: 1px solid #050505;
+    padding: 8px 12px;
 }
-.fig-2{
-    background-image: url=("linkdin.png");
-} 
-.fig-3{
-    background-image: url=("telegrama.png");
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: middle;
 }
-.fig-4{
 
-    background-image: url=("whatsapp.png");
-
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
 }

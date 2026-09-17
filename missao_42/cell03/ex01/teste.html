@@ -1,0 +1,128 @@
+// ...existing code...
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Explode this balloon</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #area-balao {
+            text-align: center;
+        }
+
+        #balao {
+            width: 200px;
+            cursor: pointer;
+            display: block;
+            transition: transform 0.08s linear;
+        }
+
+        #balao.explodindo {
+            animation: explode 0.25s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                filter: brightness(1);
+            }
+            40% {
+                transform: scale(1.8);
+                opacity: 1;
+                filter: brightness(2.2);
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+                filter: brightness(3);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="area-balao">
+        <img id="balao" src="vermelho.jpg" alt="Balão">
+    </div>
+
+    <script>
+        const balao = document.getElementById("balao");
+        const cores = ["./vermelho.jpg", "./verde.png", "./azul.png"];
+        let indice = 0;
+        let crescimento = null;
+        let encolhimento = null;
+
+        function pararTudo() {
+            clearInterval(crescimento);
+            clearInterval(encolhimento);
+            crescimento = null;
+            encolhimento = null;
+        }
+
+        function explodir() {
+            pararTudo();
+
+            balao.classList.remove("explodindo");
+            void balao.offsetWidth;
+            balao.classList.add("explodindo");
+
+            setTimeout(() => {
+                balao.classList.remove("explodindo");
+                balao.style.width = "200px";
+                balao.src = "./vermelho.jpg";
+                indice = 0;
+            }, 250);
+        }
+
+        balao.addEventListener("mouseenter", () => {
+            pararTudo();
+
+            crescimento = setInterval(() => {
+                let tamanho = balao.offsetWidth + 5;
+
+                if (tamanho >= 400) {
+                    tamanho = 400;
+                    balao.style.width = `${tamanho}px`;
+                    clearInterval(crescimento);
+                    crescimento = null;
+                    explodir();
+                    return;
+                }
+
+                balao.style.width = `${tamanho}px`;
+            }, 50);
+        });
+
+        balao.addEventListener("mouseleave", () => {
+            pararTudo();
+
+            encolhimento = setInterval(() => {
+                let tamanho = balao.offsetWidth - 5;
+
+                if (tamanho <= 200) {
+                    tamanho = 200;
+                    clearInterval(encolhimento);
+                    encolhimento = null;
+                }
+
+                balao.style.width = `${tamanho}px`;
+            }, 1000);
+        });
+
+        balao.addEventListener("click", () => {
+            indice = (indice + 1) % cores.length;
+            balao.src = cores[indice];
+        });
+    </script>
+
+</body>
+</html>

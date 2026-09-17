@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            font-family: arial, sans-serif;
+            margin: 0;
+        }
+
+        .calculadora {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        #visor {
+            width: 100%;
+            height: 50px;
+            background-color: #fff;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .botoes { 
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #d4d4d4;
+        }
+        button.operador {
+            background-color: #ff9500;
+            color: white;
+        }
+        button.operador:hover {
+            background-color: #e08500;
+        }
+        button.limpar {
+            background-color: #ff3b30;
+            color: white;
+            grid-column: span 2;
+        }
+        button.limpar:hover {
+            background-color: #d32f2f;
+        }
+        button.igual {
+            background-color: #34c759;
+            color: white;
+        }
+        button.igual:hover {
+            background-color: #28a745;
+        }
+    </style>
+</head>    
+
+<body>
+    <div class="calculadora">
+        <input type="text" id="visor" disabled placeholder="0">
+
+        <div class="botoes">
+            <!-- linha 1 -->
+            <button class="limpar" onclick="limparvisor()">C</button>
+            <button class="operador" onclick="inserir('/')">/</button>
+            <button class="operador" onclick="inserir('*')">*</button>
+            
+            <!-- linha 2 -->
+            <button onclick="inserir('7')">7</button>
+            <button onclick="inserir('8')">8</button>
+            <button onclick="inserir('9')">9</button>
+            <button class="operador" onclick="inserir('-')">-</button>
+            
+            <!-- linha 3 -->
+            <button onclick="inserir('4')">4</button>
+            <button onclick="inserir('5')">5</button>
+            <button onclick="inserir('6')">6</button>
+            <button class="operador" onclick="inserir('+')">+</button>
+            
+            <!-- linha 4 -->
+            <button onclick="inserir('1')">1</button>
+            <button onclick="inserir('2')">2</button>
+            <button onclick="inserir('3')">3</button>
+            <button class="igual" onclick="calcular()">=</button>
+            
+            <!-- linha 5 -->
+            <button onclick="inserir('0')" style="grid-column: span 2;">0</button>
+            <button onclick="inserir('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        // Seleciona o elemento do visor para ser usado nas funções
+        const visor = document.getElementById('visor');
+
+        function inserir(valor) {
+            visor.value += valor;
+        }
+
+        function limparvisor() {
+            visor.value = '';
+        }
+
+        function calcular() {
+            try {
+                // O eval calcula a string que está dentro do visor
+                visor.value = eval(visor.value);
+            } catch (error) {
+                visor.value = 'Erro';
+            }
+        }
+    </script>
+</body>
+</html>
