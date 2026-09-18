@@ -2,28 +2,35 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Button Color</title>
-    <link rel="stylesheet" href="backgroound.css">
-    <script src="jquery-3.7.1.min.js"></script>
-    
+    <title>Exemplo jQuery</title>
 </head>
 <body>
-    <button class="botao" onclick="mudarcor()">Clique me!</button>
 
+    <button id="btnMudar">Mudar Cor</button>
+
+    <!-- 1. Importando o jQuery -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" ></script>
+
+    <!-- 2. Seu script utilizando jQuery -->
     <script>
-        const cores = [
-            "#4CAF50", "blue", "blueviolet", "black", "beige", "brown",
-            "violet", "aliceblue", "wheat", "rebeccapurple", "tan", "teal",
-            "yellow", "yellowgreen", "indigo", "orangered", "orange",
-            "olive", "lawngreen", "gold", "gray"
-        ];
+        $(document).ready(function() {
+            const cores = [
+                "#4caf50", "blue", "blueviolet", "black", "beige", "brown",
+                "violet", "aliceblue", "wheat", "rebeccapurple", "tan", "teal",
+                "yellow", "yellowgreen", "indigo", "orangered", "orange",
+                "olive", "lawngreen", "gold", "gray"
+            ];
 
-        let indice = 0;
+            let indice = 0;
 
-        function mudarcor() {
-            document.body.style.backgroundColor = cores[indice];
-            indice = (indice + 1) % cores.length;
-        }
+            // Seleciona o botão pelo ID e adiciona o evento de clique
+            $("#btnMudar").click(function() {
+                // Seleciona o body e altera o fundo usando o método .css()
+                $("body").css("background-color", cores[indice]);
+                
+                indice = (indice + 1) % cores.length;
+            });
+        });
     </script>
 </body>
 </html>

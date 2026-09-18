@@ -1,8 +1,6 @@
-.body{
-    transition: background  3s;
-
+body {
+    transition: background-color 0.5s ease;
 }
-
 
 
 
@@ -15,5 +13,29 @@
     cursor: pointer;
 
 }
+
+
+.bg-verde { background-color: #4CAF50; }
+.bg-blue { background-color: blue; }
+.bg-blueviolet { background-color: blueviolet; }
+.bg-black { background-color: black; }
+.bg-beige { background-color: beige; }
+.bg-brown { background-color: brown; }
+.bg-violet { background-color: violet; }
+.bg-aliceblue { background-color: aliceblue; }
+.bg-wheat { background-color: wheat; }
+.bg-rebeccapurple { background-color: rebeccapurple; }
+.bg-tan { background-color: tan; }
+.bg-teal { background-color: teal; }
+.bg-yellow { background-color: yellow; }
+.bg-yellowgreen { background-color: yellowgreen; }
+.bg-indigo { background-color: indigo; }
+.bg-orangered { background-color: orangered; }
+.bg-orange { background-color: orange; }
+.bg-olive { background-color: olive; }
+.bg-lawngreen { background-color: lawngreen; }
+.bg-gold { background-color: gold; }
+.bg-gray { background-color: gray; }
+
 
 

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script src="jquery-3.7.1.min.js"></script>
     <meta charset="UTF-8">
-    <script src="jquery-3.7.1.min.js"></script>
     <title>Explode this balloon</title>
 
     <style>
@@ -27,6 +25,7 @@
     </style>
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" ></script>
 
     <div id="area-balao">
         <img id="balao" src="vermelho.jpg" alt="Balão">
@@ -36,66 +35,59 @@
  
 
 <script>
-    const balao = document.getElementById("balao");
-    const cores = ["./vermelho.jpg", "./verde.png", "./azul.png"];
-    let indice = 0;
-    let crescimento = null;
-    let encolhimento = null;
+const $balao = $("#balao");
+const cores = ["./vermelho.jpg", "./verde.png", "./azul.png"];
+let indice = 0;
+let crescimento = null;
+let encolhimento = null;
 
-    function pararTudo() {
-        clearInterval(crescimento);
-        clearInterval(encolhimento);
-        crescimento = null;
-        encolhimento = null;
-    }
+function pararTudo() {
+    clearInterval(crescimento);
+    clearInterval(encolhimento);
+    crescimento = null;
+    encolhimento = null;
+}
 
-    function explodir() {
-        pararTudo();
-        alert("Balao explodiu!");
-        balao.style.width = "200px";
-        balao.src = "./vermelho.jpg";
-        indice = 0;
-    }
-        // faz o balao crecer
-    balao.addEventListener("mouseenter", () => {
-        pararTudo();
+function explodir() {
+    pararTudo();
+    alert("Balao explodiu!");
+    $balao.css("width", "200px").attr("src", "./vermelho.jpg");
+    indice = 0;
+}
 
-        crescimento = setInterval(() => {
-            let tamanho = balao.offsetWidth + 5;
+// Faz o balão crescer
+$balao.on("mouseenter", () => {
+    pararTudo();
+    crescimento = setInterval(() => {
+        let tamanho = $balao.width() + 5;
+        if (tamanho >= 400) {
+            explodir();
+            return;
+        }
+        $balao.width(tamanho);
+    }, 50);
+});
 
-            if (tamanho >= 400) {
-                tamanho = 400;
-                balao.style.width = `${tamanho}px`;
-                clearInterval(crescimento);
-                crescimento = null;
-                explodir();
-                return;
-            }
+// Faz o balão diminuir
+$balao.on("mouseleave", () => {
+    pararTudo();
+    encolhimento = setInterval(() => {
+        let tamanho = $balao.width() - 5;
+        if (tamanho <= 200) {
+            tamanho = 200;
+            clearInterval(encolhimento);
+            encolhimento = null;
+        }
+        $balao.width(tamanho);
+    }, 1000);
+});
 
-            balao.style.width = `${tamanho}px`;
-        }, 50);
-    });
-            // faz o balao diminuir 
-    balao.addEventListener("mouseleave", () => {
-        pararTudo();
+// Mudar a cor do balão
+$balao.on("click", () => {
+    indice = (indice + 1) % cores.length;
+    $balao.attr("src", cores[indice]);
+});
 
-        encolhimento = setInterval(() => {
-            let tamanho = balao.offsetWidth - 5;
-
-            if (tamanho <= 200) {
-                tamanho = 200;
-                clearInterval(encolhimento);
-                encolhimento = null;
-            }
-
-            balao.style.width = `${tamanho}px`;
-        }, 1000);
-    });
-        // mudar a cor do balao
-    balao.addEventListener("click", () => {
-        indice = (indice + 1) % cores.length;
-        balao.src = cores[indice];
-    });
 </script>
 
 

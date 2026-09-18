@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" ></script>
 
     <input type="text" id="primeiro">
 
@@ -40,55 +41,58 @@
     <input type="submit" id="btn" value="Try me!">
 
     <script>
-        const btn = document.getElementById('btn');
+   $(document).ready(function() {
+    // Valida se é apenas número inteiro e >= 0
+    function isValidInteger(str) {
+        const num = Number(str);
+        return !isNaN(num) && Number.isInteger(num) && num >= 0 && str.trim() !== "";
+    }
 
-        // Valida se é apenas número inteiro e >= 0
-        function isValidInteger(str) {
-            const num = Number(str);
-            return !isNaN(num) && Number.isInteger(num) && num >= 0 && str.trim() !== "";
+    // Executa ao clicar no botão
+    $('#btn').on('click', function() {
+        const val1Str = $('#primeiro').val();
+        const val2Str = $('#segundo').val();
+        const op = $('#operador').val();
+
+        // Requisito 6: Só inteiros >= 0, senão alert('Error :(')
+        if (!isValidInteger(val1Str) || !isValidInteger(val2Str)) {
+            alert('Error :(');
+            return;
         }
 
-        // Executa ao clicar no botão
-        btn.addEventListener('click', function() {
-            const val1Str = document.getElementById('primeiro').value;
-            const val2Str = document.getElementById('segundo').value;
-            const op = document.getElementById('operador').value;
+        const n1 = parseInt(val1Str, 10);
+        const n2 = parseInt(val2Str, 10);
 
-            // Requisito 6: Só inteiros >= 0, senão alert('Error :(')
-            if (!isValidInteger(val1Str) || !isValidInteger(val2Str)) {
-                alert('Error :(');
-                return;
-            }
+        // Requisito 7: Divisão ou Módulo por zero
+        if ((op === '/' || op === '%') && n2 === 0) {
+            alert("It's over 9000!");
+            console.log("It's over 9000!");
+            return;
+        }
 
-            const n1 = parseInt(val1Str, 10);
-            const n2 = parseInt(val2Str, 10);
+        // Requisito 5: Calcula o resultado
+        let res;
+        switch (op) {
+            case '+': res = n1 + n2; break;
+            case '-': res = n1 - n2; break;
+            case '*': res = n1 * n2; break;
+            case '/': res = n1 / n2; break;
+            case '%': res = n1 % n2; break;
+        }
 
-            // Requisito 7: Divisão ou Módulo por zero
-            if ((op === '/' || op === '%') && n2 === 0) {
-                alert("It's over 9000!");
-                console.log("It's over 9000!");
-                return;
-            }
+        // Exibe resultado
+        alert(res);
+        console.log(res);
+    });
 
-            // Requisito 5: Calcula o resultado
-            let res;
-            switch (op) {
-                case '+': res = n1 + n2; break;
-                case '-': res = n1 - n2; break;
-                case '*': res = n1 * n2; break;
-                case '/': res = n1 / n2; break;
-                case '%': res = n1 % n2; break;
-            }
+    // Requisito 8: Alerta a cada 30 segundos
+   $(document).ready(function() {
+    setInterval(function() { 
+        alert('Please, use me...'); 
+    }, 3000);
+});
 
-            // Exibe resultado
-            alert(res);
-            console.log(res);
-        });
 
-        // Requisito 8: Alerta a cada 30 segundos
-        setInterval(function() {
-            alert('Please, use me...');
-        }, 30000);
     </script>
 
 </body>
