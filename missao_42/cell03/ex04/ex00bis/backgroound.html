@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Color</title>
+    <link rel="stylesheet" href="backgroound.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    
+</head>
+<body>
+    <button class="botao" onclick="mudarcor()">Clique me!</button>
+
+    <script>
+        const cores = [
+            "#4CAF50", "blue", "blueviolet", "black", "beige", "brown",
+            "violet", "aliceblue", "wheat", "rebeccapurple", "tan", "teal",
+            "yellow", "yellowgreen", "indigo", "orangered", "orange",
+            "olive", "lawngreen", "gold", "gray"
+        ];
+
+        let indice = 0;
+
+        function mudarcor() {
+            document.body.style.backgroundColor = cores[indice];
+            indice = (indice + 1) % cores.length;
+        }
+    </script>
+</body>
+</html>
